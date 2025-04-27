@@ -17,7 +17,7 @@ public partial class PlayerMovement : RigidBody2D
 	float rotSpeed;
 	
 	public override void _Ready(){
-		SightLine = GetNode("Sprite2D") as Node2D;
+		SightLine = GetNode("Sightline") as Node2D;
 		MoveRight = false;
 		MoveLeft = false;
 		MoveDown = false;

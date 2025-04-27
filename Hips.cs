@@ -10,6 +10,11 @@ public partial class Hips : Node2D{
 	[Export]
 	float maxDist;
 	Node2D Body;
+	bool inputFallingEdge;
+	bool MoveUp;
+	bool MoveDown;
+	bool MoveLeft;
+	bool MoveRight;
 	
 	public override void _Ready(){
 		Foot1=GetNode("Ankle1/Foot1") as Node2D;
@@ -17,6 +22,11 @@ public partial class Hips : Node2D{
 		isStanding = true;
 		movingFoot1=false;
 		Body = GetParent().GetParent() as Node2D;
+		inputFallingEdge = false;
+		MoveRight = false;
+		MoveLeft = false;
+		MoveDown = false;
+		MoveUp = false;
 	}
 	
 	Vector2 getLiftedPos(){
@@ -24,7 +34,7 @@ public partial class Hips : Node2D{
 		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position;
 		Vector2 difference = groundedFoot-Position;
 		output=Position-difference;
-		GD.Print(output);
+		//GD.Print(output);
 		return output;
 		
 	}
@@ -37,7 +47,37 @@ public partial class Hips : Node2D{
 		}
 	}
 	
+	public override void _Input(InputEvent @event){
+		
+		if (@event.IsAction("MoveRight")){
+			MoveRight = @event.IsPressed();
+		} 
+		if (@event.IsAction("MoveLeft")) {
+			MoveLeft = @event.IsPressed();
+		} 
+		if (@event.IsAction("MoveUp")) {
+			MoveUp = @event.IsPressed();
+		} 
+		if (@event.IsAction("MoveDown")) {
+			MoveDown = @event.IsPressed();
+		}
+	}
+	
 	public override void _Process(double delta){
+		var temp = GetNode<Area2D>("Ankle1/Foot1/Area2D").GetOverlappingAreas();
+		foreach(var i in temp){
+			if(i.Name=="TileThingy"){
+				GD.Print((i as TileThingy).ID);
+			}
+		}
+		
+		if(MoveRight || MoveLeft || MoveDown || MoveUp){
+			inputFallingEdge=true;
+		} else if (inputFallingEdge==true){
+			inputFallingEdge=false;
+			movingFoot1=!movingFoot1; //Swap feet when all keys are released
+		}
+		
 		checkBounds();
 		Position=Body.Position;
 		//GD.Print(Body.Position);
