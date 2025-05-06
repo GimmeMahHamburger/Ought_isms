@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp1x12871wtl2"
-path="res://.godot/imported/justHowILikeEm.png-06c3105f8d42ee7544a385fb82262f9a.ctex"
+uid="uid://cs6s8677ckfqg"
+path="res://.godot/imported/SpriteDown.png-088607c92ec420525827c5743252d47d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://justHowILikeEm.png"
-dest_files=["res://.godot/imported/justHowILikeEm.png-06c3105f8d42ee7544a385fb82262f9a.ctex"]
+source_file="res://Sprites/PlayerSprites/SpriteDown.png"
+dest_files=["res://.godot/imported/SpriteDown.png-088607c92ec420525827c5743252d47d.ctex"]
 
 [params]
 

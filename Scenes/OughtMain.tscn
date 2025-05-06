@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://1gnqf621ey5q"]
+
+[ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="1_r71pg"]
+[ext_resource type="Script" uid="uid://wwws5t4467q1" path="res://Scripts/Floor.cs" id="2_loakd"]
+[ext_resource type="PackedScene" uid="uid://cnln0at8qww1r" path="res://Scenes/Dude.tscn" id="3_4xfdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4fu"]
+size = Vector2(290, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8faky"]
+size = Vector2(218.144, 134.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mg4fu"]
+radius = 80.0
+height = 352.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(35, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(525, 515)
+shape = SubResource("RectangleShape2D_mg4fu")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(0, 56.75)
+scale = Vector2(1, 0.609966)
+texture = ExtResource("1_r71pg")
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(133, 79)
+script = ExtResource("2_loakd")
+
+[node name="Dude" parent="." instance=ExtResource("3_4xfdd")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1025, 464)
+shape = SubResource("RectangleShape2D_8faky")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1009, 251)
+shape = SubResource("CapsuleShape2D_mg4fu")

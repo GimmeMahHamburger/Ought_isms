@@ -16,19 +16,19 @@ public partial class Floor : Node2D{
 	List<TileTemplate> silo = new List<TileTemplate>();
 	public override void _Ready(){
 		TileTemplate temp = new TileTemplate();
-		temp.tex = GD.Load<Texture2D>("res://BST.png");
+		temp.tex = GD.Load<Texture2D>("res://Sprites/BST.png");
 		temp.width = 100;
 		temp.height = 80;
 		temp.identifier = "no thank you";
 		
 		TileTemplate temp2 = new TileTemplate();
-		temp2.tex = GD.Load<Texture2D>("res://justHowILikeEm.png");
+		temp2.tex = GD.Load<Texture2D>("res://Sprites/PlayerSprites/justHowILikeEm.png");
 		temp2.width = 100;
 		temp2.height = 80;
 		temp2.identifier = "Yes thank you";
 		
 		TileTemplate temp3 = new TileTemplate();
-		temp3.tex = GD.Load<Texture2D>("res://Foot.png");
+		temp3.tex = GD.Load<Texture2D>("res://Sprites/PlayerSprites/Foot.png");
 		temp3.width = 100;
 		temp3.height = 80;
 		temp3.identifier = "Yes thank you";
@@ -44,7 +44,7 @@ public partial class Floor : Node2D{
 	}
 	
 	void MakeTile(TileTemplate template, Vector2 offset){
-		var scene = GD.Load<PackedScene>("res://TileInstance.tscn");
+		var scene = GD.Load<PackedScene>("res://Scenes/TileInstance.tscn");
 		var instance = scene.Instantiate();
 		AddChild(instance);
 		TileThingy temp2 = instance.GetNode<TileThingy>("TileThingy");

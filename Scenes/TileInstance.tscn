@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://3x4s4y8i11pr"]
 
-[ext_resource type="Script" uid="uid://cl1ntyeyx85p0" path="res://TileThingy.cs" id="1_tyri3"]
-[ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://BST.png" id="2_7l0vy"]
+[ext_resource type="Script" uid="uid://cl1ntyeyx85p0" path="res://Scripts/TileThingy.cs" id="1_rel2o"]
+[ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="2_vr3x3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b35q7"]
 size = Vector2(191, 130)
@@ -10,11 +10,11 @@ size = Vector2(191, 130)
 
 [node name="TileThingy" type="Area2D" parent="."]
 position = Vector2(231, 196)
-script = ExtResource("1_tyri3")
+script = ExtResource("1_rel2o")
 
 [node name="TileShape" type="CollisionShape2D" parent="TileThingy"]
 shape = SubResource("RectangleShape2D_b35q7")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileThingy"]
 position = Vector2(1, 0)
-texture = ExtResource("2_7l0vy")
+texture = ExtResource("2_vr3x3")

@@ -13,11 +13,13 @@ public partial class PlayerMovement : RigidBody2D
 	[Export]
 	float SPEED = 20;
 	Node2D SightLine;
+	Node2D BodySprite;
 	[Export]
 	float rotSpeed;
 	
 	public override void _Ready(){
 		SightLine = GetNode("Sightline") as Node2D;
+		BodySprite = GetNode("BodySprite") as Node2D;
 		MoveRight = false;
 		MoveLeft = false;
 		MoveDown = false;
@@ -32,11 +34,11 @@ public partial class PlayerMovement : RigidBody2D
 		if(tempDiff>Math.PI){tempDiff-=2*Math.PI;}
 		if(tempDiff<-Math.PI){tempDiff+=2*Math.PI;}
 		if(tempDiff > Math.PI || (tempDiff < 0 && tempDiff > -Math.PI)){
-			currentDirection += (Math.Abs(tempDiff)<0.5 || Math.Abs(tempDiff+Math.PI)>0.05)?rotSpeed:(rotSpeed*0.25);
+			currentDirection += (Math.Abs(tempDiff)<0.5 || Math.Abs(tempDiff+Math.PI)>0.05)?rotSpeed:/*(rotSpeed*0.25)*/0;
 
 		}
 		if(tempDiff < -Math.PI || (tempDiff > 0 && tempDiff < Math.PI)){
-			currentDirection -= (Math.Abs(tempDiff)<0.5 || Math.Abs(tempDiff-Math.PI)>0.05)?rotSpeed:(rotSpeed*0.25);
+			currentDirection -= (Math.Abs(tempDiff)<0.5 || Math.Abs(tempDiff-Math.PI)>0.05)?rotSpeed:/*(rotSpeed*0.25)*/0;
 
 		}
 		/*double delta = 0;
@@ -106,6 +108,7 @@ public partial class PlayerMovement : RigidBody2D
 			rotateTowards(idealDir);
 			ApplyCentralImpulse(new Vector2((float)Math.Cos(currentDirection)*SPEED,(float)Math.Sin(currentDirection)*SPEED));
 		}
-		SightLine.Rotation= (float) currentDirection;
+		SightLine.Rotation = (float) currentDirection;
+		//BodySprite.spriteRotation = (float) currentDirection;
 	}
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3gxpndcs8l1p"
-path="res://.godot/imported/BST.png-2f7f77d490425b757e2e10ea1bf3bfa0.ctex"
+uid="uid://d31nxn50itni7"
+path="res://.godot/imported/SpriteLeft.png-6708873849296240ed98fde7ec576da8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BST.png"
-dest_files=["res://.godot/imported/BST.png-2f7f77d490425b757e2e10ea1bf3bfa0.ctex"]
+source_file="res://Sprites/PlayerSprites/SpriteLeft.png"
+dest_files=["res://.godot/imported/SpriteLeft.png-6708873849296240ed98fde7ec576da8.ctex"]
 
 [params]
 

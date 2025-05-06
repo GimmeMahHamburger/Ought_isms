@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnln0at8qww1r"]
+
+[ext_resource type="Script" uid="uid://ip4i07hbo60m" path="res://Scripts/PlayerMovement.cs" id="1_jlm32"]
+[ext_resource type="Script" uid="uid://cgkttj8e1urov" path="res://Scripts/Hips.cs" id="3_0mr18"]
+[ext_resource type="Texture2D" uid="uid://0hr0uehfuwik" path="res://Sprites/PlayerSprites/Foot.png" id="4_6d8ep"]
+[ext_resource type="Texture2D" uid="uid://cs6s8677ckfqg" path="res://Sprites/PlayerSprites/SpriteDown.png" id="5_0mr18"]
+[ext_resource type="Texture2D" uid="uid://bp1x12871wtl2" path="res://Sprites/PlayerSprites/justHowILikeEm.png" id="5_q2f5q"]
+[ext_resource type="Script" uid="uid://dhkmd2ggn0ble" path="res://Scripts/BodySprite.cs" id="6_6d8ep"]
+[ext_resource type="Script" uid="uid://ggb8nniebqsa" path="res://Scripts/SightLine.cs" id="6_gn2fw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolxb"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7utp4"]
+radius = 38.71
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0aa2"]
+radius = 29.14
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Dude" type="RigidBody2D" parent="."]
+position = Vector2(599, 308)
+physics_material_override = SubResource("PhysicsMaterial_bolxb")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("1_jlm32")
+rotSpeed = 0.06
+
+[node name="BodyShape" type="CollisionShape2D" parent="Dude"]
+shape = SubResource("CircleShape2D_7utp4")
+debug_color = Color(0.905087, 0.000134959, 0.747759, 0.42)
+
+[node name="Hips" type="Node2D" parent="Dude/BodyShape"]
+script = ExtResource("3_0mr18")
+maxDist = 75.0
+
+[node name="Ankle1" type="Node" parent="Dude/BodyShape/Hips"]
+
+[node name="Foot1" type="Sprite2D" parent="Dude/BodyShape/Hips/Ankle1"]
+position = Vector2(539, 310)
+texture = ExtResource("4_6d8ep")
+
+[node name="Area2D" type="Area2D" parent="Dude/BodyShape/Hips/Ankle1/Foot1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dude/BodyShape/Hips/Ankle1/Foot1/Area2D"]
+shape = SubResource("CircleShape2D_h0aa2")
+
+[node name="Ankle2" type="Node" parent="Dude/BodyShape/Hips"]
+
+[node name="Foot2" type="Sprite2D" parent="Dude/BodyShape/Hips/Ankle2"]
+position = Vector2(661, 309)
+texture = ExtResource("4_6d8ep")
+
+[node name="Area2D" type="Area2D" parent="Dude/BodyShape/Hips/Ankle2/Foot2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dude/BodyShape/Hips/Ankle2/Foot2/Area2D"]
+shape = SubResource("CircleShape2D_h0aa2")
+
+[node name="Sightline" type="Sprite2D" parent="Dude"]
+scale = Vector2(0.636546, 0.7)
+texture = ExtResource("5_q2f5q")
+offset = Vector2(123.095, 0)
+script = ExtResource("6_gn2fw")
+
+[node name="Camera2D" type="Camera2D" parent="Dude"]
+
+[node name="BodySprite" type="Sprite2D" parent="Dude"]
+z_index = 1
+texture = ExtResource("5_0mr18")
+script = ExtResource("6_6d8ep")

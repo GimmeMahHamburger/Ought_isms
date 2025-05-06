@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7733pnwp7wij"
-path="res://.godot/imported/bowserWarghSheet.png-ff9e0655e4805e687cff7258d3b29e5f.ctex"
+uid="uid://drfxhb278fi1e"
+path="res://.godot/imported/SpriteRight.png-e822bb7fdf9032228acbbe9f60984900.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bowserWarghSheet.png"
-dest_files=["res://.godot/imported/bowserWarghSheet.png-ff9e0655e4805e687cff7258d3b29e5f.ctex"]
+source_file="res://Sprites/PlayerSprites/SpriteRight.png"
+dest_files=["res://.godot/imported/SpriteRight.png-e822bb7fdf9032228acbbe9f60984900.ctex"]
 
 [params]
 

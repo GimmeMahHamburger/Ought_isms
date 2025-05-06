@@ -8,7 +8,7 @@ public partial class TileThingy : Area2D{
 	public override void _Ready(){
 		tileShape = GetNode("TileShape") as CollisionShape2D;
 		
-		var texture = GD.Load<Texture2D>("res://Foot.png");
+		var texture = GD.Load<Texture2D>("res://Sprites/PlayerSprites/Foot.png");
 		var sprite = GetNode<Sprite2D>("Sprite2D");
 		sprite.Texture = texture;
 	}

@@ -68,6 +68,8 @@ public partial class Hips : Node2D{
 		foreach(var i in temp){
 			if(i.Name=="TileThingy"){
 				GD.Print((i as TileThingy).ID);
+			} else {
+				GD.Print("nay\n");
 			}
 		}
 		
