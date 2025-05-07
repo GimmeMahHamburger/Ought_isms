@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://1gnqf621ey5q"]
+[gd_scene load_steps=9 format=3 uid="uid://1gnqf621ey5q"]
 
 [ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="1_r71pg"]
 [ext_resource type="Script" uid="uid://wwws5t4467q1" path="res://Scripts/Floor.cs" id="2_loakd"]
 [ext_resource type="PackedScene" uid="uid://cnln0at8qww1r" path="res://Scenes/Dude.tscn" id="3_4xfdd"]
-[ext_resource type="Texture2D" uid="uid://0hr0uehfuwik" path="res://Sprites/PlayerSprites/Foot.png" id="4_4xfdd"]
+[ext_resource type="Texture2D" uid="uid://snas78x3mu5k" path="res://Sprites/Hort.png" id="4_qr6l0"]
 [ext_resource type="Script" uid="uid://dq3ykxe31mo0g" path="res://Scripts/HealthBar.cs" id="5_qr6l0"]
+[ext_resource type="Texture2D" uid="uid://bp1x12871wtl2" path="res://Sprites/PlayerSprites/justHowILikeEm.png" id="6_i3cab"]
 [ext_resource type="PackedScene" uid="uid://u83evbvdxolg" path="res://NPC.tscn" id="7_i3cab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4fu"]
@@ -35,16 +36,16 @@ Height = 11
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(3, 3)
-texture = ExtResource("4_4xfdd")
-offset = Vector2(25, 19)
+position = Vector2(5, 4)
+texture = ExtResource("4_qr6l0")
+offset = Vector2(35.865, 35.725)
 script = ExtResource("5_qr6l0")
 
 [node name="HealthBarBackground" type="Sprite2D" parent="CanvasLayer"]
 z_index = -1
-position = Vector2(130.75, 22.25)
-scale = Vector2(0.871238, 0.149485)
-texture = ExtResource("1_r71pg")
+position = Vector2(163.765, 40.1314)
+scale = Vector2(1.30309, 1.59474)
+texture = ExtResource("6_i3cab")
 
 [node name="OtherDude" parent="." instance=ExtResource("7_i3cab")]
 position = Vector2(1808, -23)

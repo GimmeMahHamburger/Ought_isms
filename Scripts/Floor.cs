@@ -3,10 +3,10 @@ using System;
 using Tiles;
 using System.Collections.Generic;
 namespace Tiles{
-	public class TileTemplate{
-		public Texture2D tex;
-		public float width;
-		public float height;
+	public class TileTemplate{ //my attempt at a flyweight template
+		public Texture2D tex; //probably not optimal
+		public float width; //i do not fully understand the godot resource loader nor its optimizations
+		public float height; //so a true flyweight class may be redundant if the texture is already only stored in one place
 		public float rot;
 		public String identifier;
 	}
@@ -19,20 +19,20 @@ public partial class Floor : Node2D{
 	[Export]
 	int Height;
 	public override void _Ready(){ 
-		TileTemplate temp = new TileTemplate(); //defined in TileThingy.cs
-		temp.tex = GD.Load<Texture2D>("res://Sprites/BST.png"); //load up some bogus sprites/data
+		TileTemplate temp = new TileTemplate();
+		temp.tex = GD.Load<Texture2D>("res://Sprites/TileBlue.png"); //load up some bogus sprites/data
 		temp.width = 100;
 		temp.height = 80;
 		temp.identifier = "no thank you";
 		
 		TileTemplate temp2 = new TileTemplate();
-		temp2.tex = GD.Load<Texture2D>("res://Sprites/PlayerSprites/justHowILikeEm.png");
+		temp2.tex = GD.Load<Texture2D>("res://Sprites/FloorTileGray.png");
 		temp2.width = 100;
 		temp2.height = 80;
 		temp2.identifier = "Yes thank you";
 		
 		TileTemplate temp3 = new TileTemplate();
-		temp3.tex = GD.Load<Texture2D>("res://Sprites/PlayerSprites/Foot.png");
+		temp3.tex = GD.Load<Texture2D>("res://Sprites/TileLavender.png");
 		temp3.width = 100;
 		temp3.height = 80;
 		temp3.identifier = "Yes thank you";
