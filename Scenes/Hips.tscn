@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dojcfobpifpla"]
+
+[ext_resource type="Script" uid="uid://cgkttj8e1urov" path="res://Scripts/Hips.cs" id="1_8esc7"]
+[ext_resource type="Texture2D" uid="uid://0hr0uehfuwik" path="res://Sprites/PlayerSprites/Foot.png" id="2_i3by8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_82ifh"]
+radius = 29.14
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Hips" type="Node2D" parent="."]
+script = ExtResource("1_8esc7")
+maxDist = 100.0
+
+[node name="Ankle1" type="Node" parent="Hips"]
+
+[node name="Foot1" type="Sprite2D" parent="Hips/Ankle1"]
+position = Vector2(539, 310)
+texture = ExtResource("2_i3by8")
+
+[node name="Area2D" type="Area2D" parent="Hips/Ankle1/Foot1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hips/Ankle1/Foot1/Area2D"]
+shape = SubResource("CircleShape2D_82ifh")
+
+[node name="Ankle2" type="Node" parent="Hips"]
+
+[node name="Foot2" type="Sprite2D" parent="Hips/Ankle2"]
+position = Vector2(661, 309)
+texture = ExtResource("2_i3by8")
+
+[node name="Area2D" type="Area2D" parent="Hips/Ankle2/Foot2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hips/Ankle2/Foot2/Area2D"]
+shape = SubResource("CircleShape2D_82ifh")

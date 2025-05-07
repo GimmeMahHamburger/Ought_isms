@@ -15,6 +15,10 @@ run/main_scene="uid://1gnqf621ey5q"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerStatus="*res://Scripts/PlayerStatus.cs"
+
 [dotnet]
 
 project/assembly_name="Ought"
