@@ -5,6 +5,8 @@ public partial class Hips : Node2D{
 	
 	Node2D Foot1;
 	Node2D Foot2;
+	Area2D Area1;
+	Area2D Area2;
 	bool isStanding;
 	bool movingFoot1;
 	[Export]
@@ -15,10 +17,13 @@ public partial class Hips : Node2D{
 	bool MoveDown;
 	bool MoveLeft;
 	bool MoveRight;
+	string tileWhichFootIsAbove;
 	
 	public override void _Ready(){
 		Foot1=GetNode("Ankle1/Foot1") as Node2D;
 		Foot2=GetNode("Ankle2/Foot2") as Node2D;
+		Area1=GetNode("Ankle1/Foot1/Area2D") as Area2D;
+		Area2=GetNode("Ankle2/Foot2/Area2D") as Area2D;
 		isStanding = true;
 		movingFoot1=false;
 		inputFallingEdge = false;
@@ -26,6 +31,38 @@ public partial class Hips : Node2D{
 		MoveLeft = false;
 		MoveDown = false;
 		MoveUp = false;
+		Area1.AreaEntered+=HandleAreaEntered;
+		Area2.AreaEntered+=HandleAreaEntered;
+		//Area1.AreaExited+=HandleAreaExited;
+		//Area2.AreaExited+=HandleAreaExited;
+	}
+	
+	private void HandleAreaEntered(Area2D area){
+		//GD.Print(area);
+		if(area.Name=="TileThingy"){
+			tileWhichFootIsAbove=(area as TileThingy).ID;
+			//PlayerStatus.Status.tally((area as TileThingy).ID);
+			//GD.Print((area as TileThingy).ID);
+		} else {
+			//GD.Print("nay\n");
+		}
+	}
+	private void putFootDown(){ //toggles which foot is "on the floor"
+		if((movingFoot1?Area1:Area2).GetOverlappingAreas().Count!=0){
+			PlayerStatus.Status.tally(tileWhichFootIsAbove);
+		}
+		
+		movingFoot1 = !movingFoot1;
+	}
+	
+	private void HandleAreaExited(Area2D area){
+		if(area.Name=="TileThingy"){
+			tileWhichFootIsAbove="NONE";
+			//PlayerStatus.Status.tally((area as TileThingy).ID);
+			//GD.Print((area as TileThingy).ID);
+		} else {
+			//GD.Print("nay\n");
+		}
 	}
 	
 	Vector2 getLiftedPos(){
@@ -41,7 +78,7 @@ public partial class Hips : Node2D{
 		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position;
 		Vector2 difference = groundedFoot-parentPos;
 		if(difference.Length()>maxDist){
-			movingFoot1 = !movingFoot1;
+			putFootDown();
 		}
 	}
 	
@@ -75,7 +112,7 @@ public partial class Hips : Node2D{
 			inputFallingEdge=true;
 		} else if (inputFallingEdge==true){
 			inputFallingEdge=false;
-			movingFoot1=!movingFoot1; //Swap feet when all keys are released
+			putFootDown(); //Swap feet when all keys are released
 		}
 		
 		checkBounds();

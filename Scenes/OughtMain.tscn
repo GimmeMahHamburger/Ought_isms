@@ -54,7 +54,7 @@ texture = ExtResource("4_4xfdd")
 offset = Vector2(25, 19)
 script = ExtResource("5_qr6l0")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="HealthBarBackground" type="Sprite2D" parent="CanvasLayer"]
 z_index = -1
 position = Vector2(130.75, 22.25)
 scale = Vector2(0.871238, 0.149485)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dojcfobpifpla"]
+[gd_scene load_steps=5 format=3 uid="uid://dojcfobpifpla"]
 
 [ext_resource type="Script" uid="uid://cgkttj8e1urov" path="res://Scripts/Hips.cs" id="1_8esc7"]
-[ext_resource type="Texture2D" uid="uid://0hr0uehfuwik" path="res://Sprites/PlayerSprites/Foot.png" id="2_i3by8"]
+[ext_resource type="Texture2D" uid="uid://3p0etfo2qvuu" path="res://Sprites/PlayerSprites/FootL.png" id="2_i3by8"]
+[ext_resource type="Texture2D" uid="uid://8w2uklcg27l1" path="res://Sprites/PlayerSprites/FootR.png" id="3_82ifh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82ifh"]
-radius = 29.14
+radius = 5.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,7 +28,7 @@ shape = SubResource("CircleShape2D_82ifh")
 
 [node name="Foot2" type="Sprite2D" parent="Hips/Ankle2"]
 position = Vector2(661, 309)
-texture = ExtResource("2_i3by8")
+texture = ExtResource("3_82ifh")
 
 [node name="Area2D" type="Area2D" parent="Hips/Ankle2/Foot2"]
 

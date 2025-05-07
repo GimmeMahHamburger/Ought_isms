@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxeph0pwkrn4e"
-path="res://.godot/imported/SpriteUp.png-04ab0bfc3d472c81bf8d7da7c13c47a6.ctex"
+uid="uid://3p0etfo2qvuu"
+path="res://.godot/imported/FootL.png-d1db753cd1ec3e6cef9658b525c9aae1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerSprites/SpriteUp.png"
-dest_files=["res://.godot/imported/SpriteUp.png-04ab0bfc3d472c81bf8d7da7c13c47a6.ctex"]
+source_file="res://Sprites/PlayerSprites/FootL.png"
+dest_files=["res://.godot/imported/FootL.png-d1db753cd1ec3e6cef9658b525c9aae1.ctex"]
 
 [params]
 
