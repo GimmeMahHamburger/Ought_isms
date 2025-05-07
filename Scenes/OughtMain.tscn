@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://1gnqf621ey5q"]
+[gd_scene load_steps=8 format=3 uid="uid://1gnqf621ey5q"]
 
 [ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="1_r71pg"]
 [ext_resource type="Script" uid="uid://wwws5t4467q1" path="res://Scripts/Floor.cs" id="2_loakd"]
 [ext_resource type="PackedScene" uid="uid://cnln0at8qww1r" path="res://Scenes/Dude.tscn" id="3_4xfdd"]
 [ext_resource type="Texture2D" uid="uid://0hr0uehfuwik" path="res://Sprites/PlayerSprites/Foot.png" id="4_4xfdd"]
 [ext_resource type="Script" uid="uid://dq3ykxe31mo0g" path="res://Scripts/HealthBar.cs" id="5_qr6l0"]
-[ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="6_qr6l0"]
 [ext_resource type="PackedScene" uid="uid://u83evbvdxolg" path="res://NPC.tscn" id="7_i3cab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4fu"]
@@ -46,9 +45,6 @@ z_index = -1
 position = Vector2(130.75, 22.25)
 scale = Vector2(0.871238, 0.149485)
 texture = ExtResource("1_r71pg")
-
-[node name="Node2D" parent="." instance=ExtResource("6_qr6l0")]
-position = Vector2(263, 665)
 
 [node name="OtherDude" parent="." instance=ExtResource("7_i3cab")]
 position = Vector2(1808, -23)

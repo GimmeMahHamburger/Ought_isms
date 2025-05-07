@@ -14,16 +14,16 @@ public partial class Npc : RigidBody2D{
 	
 	public void oops(){
 		float temp1=(float)Math.Cos(currentDirection)*-50.0f;
-		float temp2=(float)Math.Sin(currentDirection)*-40d.0f;
-		ApplyImpulse(new Vector2(temp1,temp2));
+		float temp2=(float)Math.Sin(currentDirection)*-40.0f; //just jump backwards to demonstrate two-way eye contact
+		ApplyImpulse(new Vector2(temp1,temp2)); //boinggggg
 	}
 	
 	public override void _Process(double delta){
-		currentDirection+=0.01f;
-		if(currentDirection>Math.PI){currentDirection=(float)Math.PI*-1;}
-		sprite.currentDirection=currentDirection;
+		currentDirection+=0.01f; //you spin my head right round
+		if(currentDirection>Math.PI){currentDirection=(float)Math.PI*-1;} //right round
+		sprite.currentDirection=currentDirection; //like a record baby
 		
-		sight.Rotation=currentDirection;
+		sight.Rotation=currentDirection; //when you go down down
 		
 	}
 }

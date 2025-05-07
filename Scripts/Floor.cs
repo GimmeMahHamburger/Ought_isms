@@ -18,9 +18,9 @@ public partial class Floor : Node2D{
 	int Width;
 	[Export]
 	int Height;
-	public override void _Ready(){
-		TileTemplate temp = new TileTemplate();
-		temp.tex = GD.Load<Texture2D>("res://Sprites/BST.png");
+	public override void _Ready(){ 
+		TileTemplate temp = new TileTemplate(); //defined in TileThingy.cs
+		temp.tex = GD.Load<Texture2D>("res://Sprites/BST.png"); //load up some bogus sprites/data
 		temp.width = 100;
 		temp.height = 80;
 		temp.identifier = "no thank you";
@@ -40,7 +40,8 @@ public partial class Floor : Node2D{
 		AddToList(temp);
 		AddToList(temp2);
 		AddToList(temp3);
-		GenerateFloor(Width,Height);
+		GenerateFloor(Width,Height); //initialization looks ugly because it is
+		//i have yet to figure out how to put any of this in the editor window but i will figure it out eventually
 
 	}
 	void AddToList(TileTemplate template){
@@ -48,30 +49,29 @@ public partial class Floor : Node2D{
 	}
 	
 	void MakeTile(TileTemplate template, Vector2 offset){
-		var scene = GD.Load<PackedScene>("res://Scenes/TileInstance.tscn");
+		var scene = GD.Load<PackedScene>("res://Scenes/TileInstance.tscn"); //get the actual tile
 		var instance = scene.Instantiate();
-		AddChild(instance);
+		AddChild(instance); //keep track of that thing
 		TileThingy temp2 = instance.GetNode<TileThingy>("TileThingy");
-		temp2.instantiate(template, offset);
+		temp2.instantiate(template, offset); //give it the right stuff
 	}
 	
 	void GenerateFloor(int rows, int columns){
 		
 		int numTiles = silo.Count;
 		for(int i=0;i<rows;i++){
-			
 			for(int j=0;j<columns;j++){
-				for(int k=numTiles;k>0;k--){
-					if(j%Math.Pow(2,k-1)==0 || i%Math.Pow(2,k-1)==0){
+				for(int k=numTiles;k>0;k--){ //unsure how much i need to explain here
+					if(j%Math.Pow(2,k-1)==0 || i%Math.Pow(2,k-1)==0){ //the pattern is dictated by this
+						//i also want to put this in the editor but again am unsure how
 						TileTemplate template = silo[k-1];
 						float xOffset = template.width;
 						float yOffset = template.height;
 						MakeTile(template, new Vector2(xOffset*(float)i,yOffset*(float)j));
-						break;
+						break; //only one tile per offset
 					}
 				}
 			}
 		}
 	}
-	
 }

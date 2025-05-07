@@ -7,13 +7,12 @@ public partial class TileThingy : Area2D{
 	public String ID;
 	public override void _Ready(){
 		tileShape = GetNode("TileShape") as CollisionShape2D;
-		
-		var texture = GD.Load<Texture2D>("res://Sprites/PlayerSprites/Foot.png");
+		var texture = GD.Load<Texture2D>("res://Sprites/PlayerSprites/Foot.png"); //default is foot hehehe
 		var sprite = GetNode<Sprite2D>("Sprite2D");
 		sprite.Texture = texture;
 	}
 	
-	public void instantiate(TileTemplate template, Vector2 offset){
+	public void instantiate(TileTemplate template, Vector2 offset){ //take data from ideal version and reference it in flyweight
 		var sprite = GetNode<Sprite2D>("Sprite2D");
 		sprite.Texture = template.tex;
 		Vector2 oldSize = template.tex.GetSize();
@@ -26,7 +25,7 @@ public partial class TileThingy : Area2D{
 	}
 	
 	public override void _Process(double delta){
-
+		//the responsibility of "checking which tile you step on" was moved to the player
 		//GD.Print(GetOverlappingAreas());
 		
 	}

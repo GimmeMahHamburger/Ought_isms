@@ -31,10 +31,8 @@ public partial class Hips : Node2D{
 		MoveLeft = false;
 		MoveDown = false;
 		MoveUp = false;
-		Area1.AreaEntered+=HandleAreaEntered;
+		Area1.AreaEntered+=HandleAreaEntered; //signals as of now aren't used, im just keeping them around jic
 		Area2.AreaEntered+=HandleAreaEntered;
-		//Area1.AreaExited+=HandleAreaExited;
-		//Area2.AreaExited+=HandleAreaExited;
 	}
 	
 	private void HandleAreaEntered(Area2D area){
@@ -51,11 +49,10 @@ public partial class Hips : Node2D{
 		if((movingFoot1?Area1:Area2).GetOverlappingAreas().Count!=0){
 			PlayerStatus.Status.tally(tileWhichFootIsAbove);
 		}
-		
 		movingFoot1 = !movingFoot1;
 	}
 	
-	private void HandleAreaExited(Area2D area){
+	private void HandleAreaExited(Area2D area){ //unused 
 		if(area.Name=="TileThingy"){
 			tileWhichFootIsAbove="NONE";
 			//PlayerStatus.Status.tally((area as TileThingy).ID);
@@ -65,9 +62,9 @@ public partial class Hips : Node2D{
 		}
 	}
 	
-	Vector2 getLiftedPos(){
+	Vector2 getLiftedPos(){ //get the pos of the lifted foot
 		Vector2 output = new Vector2(0,0);
-		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position;
+		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position; //use the right foot
 		Vector2 difference = groundedFoot-parentPos;
 		output=parentPos-difference;
 		return output;
@@ -76,8 +73,8 @@ public partial class Hips : Node2D{
 	
 	void checkBounds(){
 		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position;
-		Vector2 difference = groundedFoot-parentPos;
-		if(difference.Length()>maxDist){
+		Vector2 difference = groundedFoot-parentPos; //currently no protection from flip-flopping every frame when both are OOB
+		if(difference.Length()>maxDist){ //will fix eventually. not critical right now
 			putFootDown();
 		}
 	}
@@ -106,7 +103,7 @@ public partial class Hips : Node2D{
 			} else {
 				//GD.Print("nay\n");
 			}
-		}
+		} //here for debugging. will delete once tile system is done
 		
 		if(MoveRight || MoveLeft || MoveDown || MoveUp){
 			inputFallingEdge=true;
@@ -121,8 +118,6 @@ public partial class Hips : Node2D{
 		}else{
 			Foot1.Position=getLiftedPos();
 		}
-		
-		//Foot1.Position+=new Vector2(0.1f,0.0f);
 	}
 	
 }
