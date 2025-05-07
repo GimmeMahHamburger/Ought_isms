@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnln0at8qww1r"]
 
 [ext_resource type="Script" uid="uid://ip4i07hbo60m" path="res://Scripts/PlayerMovement.cs" id="1_jlm32"]
-[ext_resource type="Texture2D" uid="uid://hr8ce4lfavm3" path="res://Sprites/PlayerSprites/SpriteDown.png" id="5_0mr18"]
+[ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="4_q4an3"]
 [ext_resource type="Texture2D" uid="uid://bp1x12871wtl2" path="res://Sprites/PlayerSprites/justHowILikeEm.png" id="5_q2f5q"]
-[ext_resource type="Script" uid="uid://dhkmd2ggn0ble" path="res://Scripts/BodySprite.cs" id="6_6d8ep"]
 [ext_resource type="Script" uid="uid://ggb8nniebqsa" path="res://Scripts/SightLine.cs" id="6_gn2fw"]
 [ext_resource type="PackedScene" uid="uid://dojcfobpifpla" path="res://Scenes/Hips.tscn" id="6_q4an3"]
+[ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="7_vxyiy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolxb"]
 friction = 0.0
@@ -22,13 +22,15 @@ gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 5.0
 script = ExtResource("1_jlm32")
-rotSpeed = 0.02
+SPEED = 15.0
+rotSpeed = 0.03
 
 [node name="BodyShape" type="CollisionShape2D" parent="Dude"]
 shape = SubResource("CircleShape2D_7utp4")
 debug_color = Color(0.905087, 0.000134959, 0.747759, 0.42)
 
 [node name="Sightline" type="Sprite2D" parent="Dude"]
+visible = false
 scale = Vector2(0.636546, 0.7)
 texture = ExtResource("5_q2f5q")
 offset = Vector2(123.095, 0)
@@ -36,9 +38,8 @@ script = ExtResource("6_gn2fw")
 
 [node name="Camera2D" type="Camera2D" parent="Dude"]
 
-[node name="BodySprite" type="Sprite2D" parent="Dude"]
-z_index = 1
-texture = ExtResource("5_0mr18")
-script = ExtResource("6_6d8ep")
+[node name="BodySprite" parent="Dude" instance=ExtResource("4_q4an3")]
 
 [node name="Hips" parent="Dude" instance=ExtResource("6_q4an3")]
+
+[node name="Sight" parent="Dude" instance=ExtResource("7_vxyiy")]

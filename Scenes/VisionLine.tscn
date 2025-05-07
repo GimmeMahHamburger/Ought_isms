@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://tmipqe85nyia"]
+
+[ext_resource type="Script" uid="uid://dfa3mr2wcvwlq" path="res://Scripts/EyeSight.cs" id="1_e8xpx"]
+[ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="2_bghaw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jw65e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xpx"]
+size = Vector2(142, 5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EyeBar" type="StaticBody2D" parent="."]
+rotation = -1.5708
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_jw65e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeBar"]
+shape = SubResource("RectangleShape2D_e8xpx")
+
+[node name="EyeSight" type="RayCast2D" parent="EyeBar"]
+position = Vector2(0, 6)
+target_position = Vector2(0, 1000)
+collision_mask = 2
+script = ExtResource("1_e8xpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="EyeBar"]
+position = Vector2(-0.296768, 163)
+scale = Vector2(0.0316155, 1)
+texture = ExtResource("2_bghaw")

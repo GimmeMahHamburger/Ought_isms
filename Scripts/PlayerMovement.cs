@@ -13,19 +13,26 @@ public partial class PlayerMovement : RigidBody2D
 	[Export]
 	float SPEED = 20;
 	Node2D SightLine;
-	Node2D BodySprite;
+	Node2D Sight;
+	BodySprite Sprite;
 	Hips hips;
 	[Export]
 	float rotSpeed;
 	
 	public override void _Ready(){
 		SightLine = GetNode("Sightline") as Node2D;
-		BodySprite = GetNode("BodySprite") as Node2D;
+		Sprite = GetNode("BodySprite") as BodySprite;
 		hips = GetNode("Hips/Hips") as Hips;
+		Sight = GetNode("Sight") as Node2D;
+		(Sight.GetNode("EyeBar/EyeSight") as EyeSight).EyeContact+=temp;
 		MoveRight = false;
 		MoveLeft = false;
 		MoveDown = false;
 		MoveUp = false;
+	}
+	
+	void temp(){
+		PlayerStatus.Status.healthValue-=1;
 	}
 	
 	void rotateTowards(Vector2 dir){
@@ -111,7 +118,9 @@ public partial class PlayerMovement : RigidBody2D
 			ApplyCentralImpulse(new Vector2((float)Math.Cos(currentDirection)*SPEED,(float)Math.Sin(currentDirection)*SPEED));
 		}
 		SightLine.Rotation = (float) currentDirection;
+		Sight.Rotation = (float) currentDirection;
 		hips.parentPos=Position;
-		//BodySprite.spriteRotation = (float) currentDirection;
+		
+		Sprite.currentDirection = (float) currentDirection;
 	}
 }

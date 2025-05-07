@@ -14,6 +14,9 @@ public partial class PlayerStatus : Node {
 		Status.maxHealthValue=100;
 		TileTallier = new Dictionary<string, int>();
 	}
+	void Ping(){
+		healthValue-=1;
+	}
 	public void tally(string input){
 		if(TileTallier.ContainsKey(input)){
 			TileTallier[input]++;
@@ -21,13 +24,13 @@ public partial class PlayerStatus : Node {
 			TileTallier.Add(input,1);
 		}
 		foreach(var entry in TileTallier){
-			if(Math.Abs(entry.Value-TileTallier[input])>10){
+			if(TileTallier[input]-entry.Value>5){
 				healthValue--;
 			}
-			GD.Print(Math.Abs(entry.Value-TileTallier[input]));
+			//GD.Print(Math.Abs(entry.Value-TileTallier[input]));
 		}
 		
-		GD.Print(healthValue);
+		//GD.Print(healthValue);
 	}
 	
 }

@@ -14,6 +14,10 @@ namespace Tiles{
 
 public partial class Floor : Node2D{
 	List<TileTemplate> silo = new List<TileTemplate>();
+	[Export]
+	int Width;
+	[Export]
+	int Height;
 	public override void _Ready(){
 		TileTemplate temp = new TileTemplate();
 		temp.tex = GD.Load<Texture2D>("res://Sprites/BST.png");
@@ -36,7 +40,7 @@ public partial class Floor : Node2D{
 		AddToList(temp);
 		AddToList(temp2);
 		AddToList(temp3);
-		GenerateFloor(7,7);
+		GenerateFloor(Width,Height);
 
 	}
 	void AddToList(TileTemplate template){

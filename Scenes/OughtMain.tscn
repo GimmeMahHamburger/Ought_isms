@@ -5,16 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cnln0at8qww1r" path="res://Scenes/Dude.tscn" id="3_4xfdd"]
 [ext_resource type="Texture2D" uid="uid://0hr0uehfuwik" path="res://Sprites/PlayerSprites/Foot.png" id="4_4xfdd"]
 [ext_resource type="Script" uid="uid://dq3ykxe31mo0g" path="res://Scripts/HealthBar.cs" id="5_qr6l0"]
+[ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="6_qr6l0"]
+[ext_resource type="PackedScene" uid="uid://u83evbvdxolg" path="res://NPC.tscn" id="7_i3cab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4fu"]
-size = Vector2(290, 84)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8faky"]
-size = Vector2(218.144, 134.5)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mg4fu"]
-radius = 80.0
-height = 352.0
+size = Vector2(486, 483)
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,29 +17,21 @@ height = 352.0
 position = Vector2(35, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(525, 515)
+position = Vector2(1527, 319.5)
 shape = SubResource("RectangleShape2D_mg4fu")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
-position = Vector2(0, 56.75)
-scale = Vector2(1, 0.609966)
+position = Vector2(0.125, -0.500015)
+scale = Vector2(1.65134, 1.66581)
 texture = ExtResource("1_r71pg")
 
 [node name="Floor" type="Node2D" parent="."]
 position = Vector2(133, 79)
 script = ExtResource("2_loakd")
+Width = 11
+Height = 11
 
 [node name="Dude" parent="." instance=ExtResource("3_4xfdd")]
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1025, 464)
-shape = SubResource("RectangleShape2D_8faky")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1009, 251)
-shape = SubResource("CapsuleShape2D_mg4fu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -59,3 +46,9 @@ z_index = -1
 position = Vector2(130.75, 22.25)
 scale = Vector2(0.871238, 0.149485)
 texture = ExtResource("1_r71pg")
+
+[node name="Node2D" parent="." instance=ExtResource("6_qr6l0")]
+position = Vector2(263, 665)
+
+[node name="OtherDude" parent="." instance=ExtResource("7_i3cab")]
+position = Vector2(1808, -23)

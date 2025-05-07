@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xddiq6lb07g2"]
+
+[ext_resource type="Texture2D" uid="uid://hr8ce4lfavm3" path="res://Sprites/PlayerSprites/SpriteDown.png" id="1_74ahc"]
+[ext_resource type="Script" uid="uid://dhkmd2ggn0ble" path="res://Scripts/BodySprite.cs" id="2_2ldpb"]
+
+[node name="BodySprite" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_74ahc")
+script = ExtResource("2_2ldpb")

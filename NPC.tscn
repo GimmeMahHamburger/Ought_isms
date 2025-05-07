@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://u83evbvdxolg"]
+
+[ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="1_ll5ud"]
+[ext_resource type="Script" uid="uid://daqs72wd4q7xt" path="res://Scripts/Npc.cs" id="1_u1jv5"]
+[ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="2_u1jv5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u1jv5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tciug"]
+radius = 76.99
+
+[node name="Node2D" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_u1jv5")
+gravity_scale = 0.0
+linear_damp = 6.121
+script = ExtResource("1_u1jv5")
+
+[node name="Sight" parent="." instance=ExtResource("1_ll5ud")]
+
+[node name="BodySprite" parent="." instance=ExtResource("2_u1jv5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tciug")
