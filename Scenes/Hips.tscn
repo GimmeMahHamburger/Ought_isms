@@ -16,7 +16,7 @@ maxDist = 100.0
 [node name="Ankle1" type="Node" parent="Hips"]
 
 [node name="Foot1" type="Sprite2D" parent="Hips/Ankle1"]
-position = Vector2(539, 310)
+position = Vector2(-42, -1)
 texture = ExtResource("2_i3by8")
 
 [node name="Area2D" type="Area2D" parent="Hips/Ankle1/Foot1"]
@@ -27,7 +27,7 @@ shape = SubResource("CircleShape2D_82ifh")
 [node name="Ankle2" type="Node" parent="Hips"]
 
 [node name="Foot2" type="Sprite2D" parent="Hips/Ankle2"]
-position = Vector2(661, 309)
+position = Vector2(38, 0)
 texture = ExtResource("3_82ifh")
 
 [node name="Area2D" type="Area2D" parent="Hips/Ankle2/Foot2"]

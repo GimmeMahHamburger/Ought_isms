@@ -33,6 +33,7 @@ public partial class Hips : Node2D{
 		MoveUp = false;
 		Area1.AreaEntered+=HandleAreaEntered; //signals as of now aren't used, im just keeping them around jic
 		Area2.AreaEntered+=HandleAreaEntered;
+		
 	}
 	
 	private void HandleAreaEntered(Area2D area){
@@ -45,6 +46,8 @@ public partial class Hips : Node2D{
 			//GD.Print("nay\n");
 		}
 	}
+	
+	
 	private void putFootDown(){ //toggles which foot is "on the floor"
 		if((movingFoot1?Area1:Area2).GetOverlappingAreas().Count!=0){
 			PlayerStatus.Status.tally(tileWhichFootIsAbove);
@@ -75,6 +78,7 @@ public partial class Hips : Node2D{
 		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position;
 		Vector2 difference = groundedFoot-parentPos; //currently no protection from flip-flopping every frame when both are OOB
 		if(difference.Length()>maxDist){ //will fix eventually. not critical right now
+			Foot2.Position+=difference/2.0f;
 			putFootDown();
 		}
 	}

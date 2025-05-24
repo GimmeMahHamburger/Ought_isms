@@ -9,7 +9,7 @@ public partial class Npc : RigidBody2D{
 		sight=GetNode("Sight") as Node2D;
 		sprite=GetNode("BodySprite") as BodySprite;
 		currentDirection=0.0f;
-		(sight.GetNode("EyeBar/EyeSight") as EyeSight).EyeContact+=oops;
+		(sight.GetNode("EyeSight") as EyeSight).EyeContact+=oops;
 	}
 	
 	public void oops(){

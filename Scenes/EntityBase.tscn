@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://77bc38raj355"]
+
+[ext_resource type="Script" uid="uid://btcqldjwtm5e3" path="res://Scripts/EntityBase.cs" id="1_d63ah"]
+
+[node name="EntityBase" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_d63ah")

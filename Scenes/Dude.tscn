@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnln0at8qww1r"]
+[gd_scene load_steps=10 format=3 uid="uid://cnln0at8qww1r"]
 
 [ext_resource type="Script" uid="uid://ip4i07hbo60m" path="res://Scripts/PlayerMovement.cs" id="1_jlm32"]
 [ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="4_q4an3"]
 [ext_resource type="Texture2D" uid="uid://bp1x12871wtl2" path="res://Sprites/PlayerSprites/justHowILikeEm.png" id="5_q2f5q"]
 [ext_resource type="Script" uid="uid://ggb8nniebqsa" path="res://Scripts/SightLine.cs" id="6_gn2fw"]
 [ext_resource type="PackedScene" uid="uid://dojcfobpifpla" path="res://Scenes/Hips.tscn" id="6_q4an3"]
+[ext_resource type="PackedScene" uid="uid://cjd34q25at8gw" path="res://Scenes/PlayerMovementStrategy.tscn" id="7_ta5ym"]
 [ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="7_vxyiy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bolxb"]
@@ -43,3 +44,5 @@ script = ExtResource("6_gn2fw")
 [node name="Hips" parent="Dude" instance=ExtResource("6_q4an3")]
 
 [node name="Sight" parent="Dude" instance=ExtResource("7_vxyiy")]
+
+[node name="PlayerMovementStrategy" parent="Dude" instance=ExtResource("7_ta5ym")]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://1gnqf621ey5q"]
+[gd_scene load_steps=10 format=3 uid="uid://1gnqf621ey5q"]
 
 [ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="1_r71pg"]
 [ext_resource type="Script" uid="uid://wwws5t4467q1" path="res://Scripts/Floor.cs" id="2_loakd"]
-[ext_resource type="PackedScene" uid="uid://cnln0at8qww1r" path="res://Scenes/Dude.tscn" id="3_4xfdd"]
 [ext_resource type="Texture2D" uid="uid://snas78x3mu5k" path="res://Sprites/Hort.png" id="4_qr6l0"]
 [ext_resource type="Script" uid="uid://dq3ykxe31mo0g" path="res://Scripts/HealthBar.cs" id="5_qr6l0"]
 [ext_resource type="Texture2D" uid="uid://bp1x12871wtl2" path="res://Sprites/PlayerSprites/justHowILikeEm.png" id="6_i3cab"]
-[ext_resource type="PackedScene" uid="uid://u83evbvdxolg" path="res://NPC.tscn" id="7_i3cab"]
+[ext_resource type="PackedScene" uid="uid://bv0pemt4ka174" path="res://Scenes/PlayerBase.tscn" id="7_0q06l"]
+[ext_resource type="PackedScene" uid="uid://u83evbvdxolg" path="res://Scenes/NPC.tscn" id="7_i3cab"]
+[ext_resource type="PackedScene" uid="uid://pojvmy3pibnb" path="res://Scenes/SpinningNPC.tscn" id="8_0q06l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4fu"]
 size = Vector2(486, 483)
@@ -31,8 +32,6 @@ script = ExtResource("2_loakd")
 Width = 11
 Height = 11
 
-[node name="Dude" parent="." instance=ExtResource("3_4xfdd")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="Sprite2D" parent="CanvasLayer"]
@@ -43,9 +42,15 @@ script = ExtResource("5_qr6l0")
 
 [node name="HealthBarBackground" type="Sprite2D" parent="CanvasLayer"]
 z_index = -1
-position = Vector2(163.765, 40.1314)
-scale = Vector2(1.30309, 1.59474)
+position = Vector2(189.765, 40.1314)
+scale = Vector2(1.51193, 1.59474)
 texture = ExtResource("6_i3cab")
 
 [node name="OtherDude" parent="." instance=ExtResource("7_i3cab")]
-position = Vector2(1808, -23)
+position = Vector2(954, 502)
+
+[node name="PlayerBase" parent="." instance=ExtResource("7_0q06l")]
+position = Vector2(232, 273)
+
+[node name="SpinningNPC" parent="." instance=ExtResource("8_0q06l")]
+position = Vector2(757, 60)

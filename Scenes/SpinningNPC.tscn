@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://pojvmy3pibnb"]
+
+[ext_resource type="Script" uid="uid://cys3apsfw3xws" path="res://Scripts/SpinningNpc.cs" id="1_8py2v"]
+[ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="2_exxno"]
+[ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="3_exxno"]
+[ext_resource type="Script" uid="uid://un3pjdafeglq" path="res://Scripts/SpinningStrategy.cs" id="4_bpxqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpxqi"]
+radius = 67.42
+
+[node name="SpinningNPC" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 3.061
+script = ExtResource("1_8py2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bpxqi")
+
+[node name="VisionLine" parent="." instance=ExtResource("2_exxno")]
+
+[node name="BodySprite" parent="." instance=ExtResource("3_exxno")]
+
+[node name="SpinningStrategy" type="Node2D" parent="."]
+script = ExtResource("4_bpxqi")

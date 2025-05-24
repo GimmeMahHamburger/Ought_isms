@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 public partial class BodySprite : Sprite2D {
+	[Export]
 	Texture2D lookUp;
 	Texture2D lookDown;
 	Texture2D lookRight;
