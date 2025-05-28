@@ -18,7 +18,13 @@ public partial class Floor : Node2D{
 	int Width;
 	[Export]
 	int Height;
+	ShaderMaterial? floorShader=null;
+	float timerTemp;
 	public override void _Ready(){ 
+		
+		//floorShader=GD.Load<ShaderMaterial>("res://Sprites/TileShader.glsl.gdshader");
+		
+		timerTemp=0.0f;
 		TileTemplate temp = new TileTemplate();
 		temp.tex = GD.Load<Texture2D>("res://Sprites/TileBlue.png"); //load up some bogus sprites/data
 		temp.width = 100;
@@ -54,6 +60,19 @@ public partial class Floor : Node2D{
 		AddChild(instance); //keep track of that thing
 		TileThingy temp2 = instance.GetNode<TileThingy>("TileThingy");
 		temp2.instantiate(template, offset); //give it the right stuff
+		if(floorShader==null){
+			floorShader = temp2.GetNode<Sprite2D>("Sprite2D").Material as ShaderMaterial;
+			floorShader.SetShaderParameter("size",new Vector2(template.width,template.height));
+		}
+	}
+	
+	public override void _Process(double delta){
+		if(floorShader!=null){
+			floorShader.SetShaderParameter("colorInput", new Vector4(1.0f,0.5f,0.5f,1.0f));
+			var pos = PlayerStatus.Status.playerInstance.GlobalPosition;
+			floorShader.SetShaderParameter("offset",-GlobalPosition+pos);
+		}
+		
 	}
 	
 	void GenerateFloor(int rows, int columns){

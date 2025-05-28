@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2ejpfkq8ogw7"]
+
+[ext_resource type="Script" uid="uid://ckdt60icf3efq" path="res://Scripts/FollowingNpc.cs" id="1_uvwga"]
+[ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="2_gmskb"]
+[ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="3_vnrga"]
+[ext_resource type="Script" uid="uid://d2rklmf7tupyd" path="res://Scripts/LookTowardsStrategy.cs" id="4_vnrga"]
+[ext_resource type="Script" uid="uid://iurp6di4if7o" path="res://Scripts/GoForwardsStrategy.cs" id="5_x74jr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x74jr"]
+
+[node name="FollowingNPC" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.101
+script = ExtResource("1_uvwga")
+
+[node name="BodySprite" parent="." instance=ExtResource("2_gmskb")]
+
+[node name="VisionLine" parent="." instance=ExtResource("3_vnrga")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x74jr")
+
+[node name="LookTowardsStrategy" type="Node2D" parent="."]
+script = ExtResource("4_vnrga")
+
+[node name="GoForwardsStrategy" type="Node2D" parent="."]
+script = ExtResource("5_x74jr")
+SPEED = 5.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://tmipqe85nyia"]
 
-[ext_resource type="Script" uid="uid://b4jrcxgevlqqy" path="res://Scenes/VisionLine.cs" id="1_3pky1"]
+[ext_resource type="Script" uid="uid://b4jrcxgevlqqy" path="res://Scripts/VisionLine.cs" id="1_3pky1"]
 [ext_resource type="Script" uid="uid://dfa3mr2wcvwlq" path="res://Scripts/EyeSight.cs" id="1_e8xpx"]
 [ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="2_bghaw"]
 

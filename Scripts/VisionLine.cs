@@ -15,4 +15,7 @@ public partial class VisionLine : StaticBody2D
 		return Sight.GetCollider()!=null;
 		
 	}
+	public Node2D collidingWith(){
+		return Sight.GetCollider() as Node2D;
+	}
 }

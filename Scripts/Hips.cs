@@ -17,7 +17,7 @@ public partial class Hips : Node2D{
 	bool MoveDown;
 	bool MoveLeft;
 	bool MoveRight;
-	string tileWhichFootIsAbove;
+	TileThingy tileWhichFootIsAbove;
 	
 	public override void _Ready(){
 		Foot1=GetNode("Ankle1/Foot1") as Node2D;
@@ -39,7 +39,7 @@ public partial class Hips : Node2D{
 	private void HandleAreaEntered(Area2D area){
 		//GD.Print(area);
 		if(area.Name=="TileThingy"){
-			tileWhichFootIsAbove=(area as TileThingy).ID;
+			tileWhichFootIsAbove=area as TileThingy;
 			//PlayerStatus.Status.tally((area as TileThingy).ID);
 			//GD.Print((area as TileThingy).ID);
 		} else {
@@ -51,13 +51,14 @@ public partial class Hips : Node2D{
 	private void putFootDown(){ //toggles which foot is "on the floor"
 		if((movingFoot1?Area1:Area2).GetOverlappingAreas().Count!=0){
 			PlayerStatus.Status.tally(tileWhichFootIsAbove);
+			tileWhichFootIsAbove.ShaderProc((movingFoot1?Area1:Area2).GlobalPosition);
 		}
 		movingFoot1 = !movingFoot1;
 	}
 	
-	private void HandleAreaExited(Area2D area){ //unused 
+	private void HandleAreaExited(Area2D area){ 
 		if(area.Name=="TileThingy"){
-			tileWhichFootIsAbove="NONE";
+			tileWhichFootIsAbove=new TileThingy(); //null object
 			//PlayerStatus.Status.tally((area as TileThingy).ID);
 			//GD.Print((area as TileThingy).ID);
 		} else {
@@ -78,7 +79,9 @@ public partial class Hips : Node2D{
 		Vector2 groundedFoot = movingFoot1?Foot1.Position:Foot2.Position;
 		Vector2 difference = groundedFoot-parentPos; //currently no protection from flip-flopping every frame when both are OOB
 		if(difference.Length()>maxDist){ //will fix eventually. not critical right now
-			Foot2.Position+=difference/2.0f;
+			if(difference.Length()>10+maxDist){
+				Foot2.Position+=difference/2.0f;
+			}
 			putFootDown();
 		}
 	}

@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://dq3ykxe31mo0g" path="res://Scripts/HealthBar.cs" id="5_qr6l0"]
 [ext_resource type="Texture2D" uid="uid://bp1x12871wtl2" path="res://Sprites/PlayerSprites/justHowILikeEm.png" id="6_i3cab"]
 [ext_resource type="PackedScene" uid="uid://bv0pemt4ka174" path="res://Scenes/PlayerBase.tscn" id="7_0q06l"]
-[ext_resource type="PackedScene" uid="uid://u83evbvdxolg" path="res://Scenes/NPC.tscn" id="7_i3cab"]
 [ext_resource type="PackedScene" uid="uid://pojvmy3pibnb" path="res://Scenes/SpinningNPC.tscn" id="8_0q06l"]
+[ext_resource type="PackedScene" uid="uid://c2ejpfkq8ogw7" path="res://Scenes/FollowingNPC.tscn" id="8_wxcjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg4fu"]
 size = Vector2(486, 483)
@@ -27,7 +27,6 @@ scale = Vector2(1.65134, 1.66581)
 texture = ExtResource("1_r71pg")
 
 [node name="Floor" type="Node2D" parent="."]
-position = Vector2(133, 79)
 script = ExtResource("2_loakd")
 Width = 11
 Height = 11
@@ -46,11 +45,11 @@ position = Vector2(189.765, 40.1314)
 scale = Vector2(1.51193, 1.59474)
 texture = ExtResource("6_i3cab")
 
-[node name="OtherDude" parent="." instance=ExtResource("7_i3cab")]
-position = Vector2(954, 502)
-
 [node name="PlayerBase" parent="." instance=ExtResource("7_0q06l")]
-position = Vector2(232, 273)
+position = Vector2(577, 320)
 
 [node name="SpinningNPC" parent="." instance=ExtResource("8_0q06l")]
 position = Vector2(757, 60)
+
+[node name="FollowingNPC" parent="." instance=ExtResource("8_wxcjb")]
+position = Vector2(587, 418)

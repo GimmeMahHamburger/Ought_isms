@@ -12,4 +12,7 @@ public partial class EntityBase : RigidBody2D {
 		if(currentDirection>Math.PI){ currentDirection-=2*(float)Math.PI; }
 		if(currentDirection<-Math.PI){ currentDirection+=2*(float)Math.PI; }
 	}
+	public float getCurrentDirection(){
+		return currentDirection;
+	}
 }

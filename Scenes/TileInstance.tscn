@@ -1,20 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://3x4s4y8i11pr"]
+[gd_scene load_steps=6 format=3 uid="uid://3x4s4y8i11pr"]
 
 [ext_resource type="Script" uid="uid://cl1ntyeyx85p0" path="res://Scripts/TileThingy.cs" id="1_rel2o"]
+[ext_resource type="Shader" uid="uid://codtj4gxgk0fb" path="res://Sprites/TileShader.glsl.gdshader" id="2_1fixl"]
 [ext_resource type="Texture2D" uid="uid://b3gxpndcs8l1p" path="res://Sprites/BST.png" id="2_vr3x3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b35q7"]
 size = Vector2(191, 130)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkoeu"]
+shader = ExtResource("2_1fixl")
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/size = Vector2(100, 100)
+shader_parameter/currentPos = Vector2(0, 0)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileThingy" type="Area2D" parent="."]
-position = Vector2(231, 196)
+position = Vector2(-1, 1)
 script = ExtResource("1_rel2o")
 
 [node name="TileShape" type="CollisionShape2D" parent="TileThingy"]
 shape = SubResource("RectangleShape2D_b35q7")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileThingy"]
+material = SubResource("ShaderMaterial_qkoeu")
 position = Vector2(1, 0)
 texture = ExtResource("2_vr3x3")

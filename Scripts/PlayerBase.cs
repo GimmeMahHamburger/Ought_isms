@@ -17,6 +17,7 @@ public partial class PlayerBase : EntityBase {
 		Sight = GetNode("VisionLine") as Node2D;
 		(Sight.GetNode("EyeSight") as EyeSight).EyeContact+=temp;
 		//(GetNode("PlayerMovementStrategy") as PlayerMovementStrategy).Parent=this;
+		PlayerStatus.Status.playerInstance=this;
 	}
 	
 	void temp(){

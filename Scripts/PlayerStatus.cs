@@ -25,6 +25,7 @@ public partial class PlayerStatus : Node {
 	public int maxHealthValue;
 	public int healthValue;
 	TileTallier tallier;
+	public PlayerBase playerInstance;
 	private PlayerStatus(){
 		GD.Print("you're not supposed to use this");
 		tallier=new TileTallier();
@@ -37,8 +38,9 @@ public partial class PlayerStatus : Node {
 	public void Ping(){
 		healthValue-=1;
 	}
-	public void tally(string input){ //part of tally functionality
-		if(tallier.internalTally(input)){Ping();};
+	public void tally(TileThingy input){ //part of tally functionality
+		if(tallier.internalTally(input.ID)){Ping();};
+		
 		
 	}
 	
