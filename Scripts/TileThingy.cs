@@ -30,8 +30,8 @@ public partial class TileThingy : Area2D{
 	
 	public void ShaderProc(Vector2 inputPos){
 		//var pos = PlayerStatus.Status.playerInstance.GlobalPosition;
-		GD.Print("steppy at");
-		GD.Print(GlobalPosition);
+		//GD.Print("steppy at");
+		//GD.Print(GlobalPosition);
 		(GetNode<Sprite2D>("Sprite2D").Material as ShaderMaterial).SetShaderParameter("currentPos",GlobalPosition);
 		//(GetNode<Sprite2D>("Sprite2D").Material as ShaderMaterial).SetShaderParameter("offset",inputPos-GlobalPosition);
 		

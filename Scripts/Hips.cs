@@ -39,9 +39,7 @@ public partial class Hips : Node2D{
 	private void HandleAreaEntered(Area2D area){
 		//GD.Print(area);
 		if(area.Name=="TileThingy"){
-			tileWhichFootIsAbove=area as TileThingy;
-			//PlayerStatus.Status.tally((area as TileThingy).ID);
-			//GD.Print((area as TileThingy).ID);
+			tileWhichFootIsAbove=area as TileThingy; //TODO: This is awful. never triggers if foot never leaves
 		} else {
 			//GD.Print("nay\n");
 		}

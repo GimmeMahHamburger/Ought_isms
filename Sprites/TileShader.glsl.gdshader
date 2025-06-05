@@ -10,9 +10,9 @@ void fragment() {
 	vec4 color = texture(TEXTURE,UV);
 	float correctPosX=FRAGCOORD.x+offset.x-currentPos.x-0.5/SCREEN_PIXEL_SIZE.x+size.x*75.0/2.0; //wtf are these magic numbers
 	float correctPosY=FRAGCOORD.y+offset.y-currentPos.y-0.5/SCREEN_PIXEL_SIZE.y+size.y*75.0/2.0;
-	if(correctPosX<size.x*75.0f && correctPosX>0.0
+	if(correctPosX<size.x*75.0f && correctPosX>0.0 //Idk why these numbers work. they work and thats all I care about rn
 	&&
-	correctPosY<size.y*80.0f && correctPosY>0.0){
+	correctPosY<size.y*75.0f && correctPosY>0.0){
 		color=mix(color, vec4(1,0,1,1),0.5);
 	}
 	
