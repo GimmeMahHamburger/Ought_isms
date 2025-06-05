@@ -30,12 +30,13 @@ public partial class TrailSegment : CollisionShape2D
 		
 		Sprite2D temp= GetNode<Sprite2D>("Sprite2D");
 		temp.Texture=input;
-		Vector2 oldSize = temp.Texture.GetSize();
-		Vector2 newSize = new Vector2((Shape as CapsuleShape2D).Height*2, (Shape as CapsuleShape2D).Radius)/oldSize;
-		temp.Scale=newSize;
+		
 		return this;
 	}
 	public TrailSegment Finish(){
+		Sprite2D temp= GetNode<Sprite2D>("Sprite2D");
+		Vector2 newSize = new Vector2((Shape as CapsuleShape2D).Height*2, (Shape as CapsuleShape2D).Radius)/temp.Texture.GetSize();
+		temp.Scale=newSize;
 		Disabled=false;
 		return this;
 	}

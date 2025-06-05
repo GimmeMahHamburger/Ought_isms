@@ -6,13 +6,17 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
+	vec4 color = texture(TEXTURE,UV);
 	float width=1.0/SCREEN_PIXEL_SIZE.x;
 	float height=1.0/SCREEN_PIXEL_SIZE.y;
 	float dist1 = (width-FRAGCOORD.x)/(width);
 	float dist2 = (height-FRAGCOORD.y)/(height);
 	float dist3 = distance(vec2(FRAGCOORD.x,FRAGCOORD.y),vec2(width/2.0,height/2.0));
 	float scaledDist=0.2*height/(dist3)-0.2;
-	COLOR=vec4(dist1,dist2,1,1.3-1.0/scaledDist);
+	//COLOR=vec4(dist1,dist2,1,1.3-1.0/scaledDist);
+	
+	//COLOR=vec4(color.x,color.y,color.z,1.3-1.0/scaledDist);
+	COLOR = vec4(1,1,1,1);
 }
 
 //void light() {

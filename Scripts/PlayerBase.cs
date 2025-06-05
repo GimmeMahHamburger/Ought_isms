@@ -8,6 +8,7 @@ public partial class PlayerBase : EntityBase {
 	Node2D Sight;
 	BodySprite Sprite;
 	Hips hips;
+	Area2D marker;
 	[Export]
 	float rotSpeed;
 	public override void _Ready(){
@@ -15,6 +16,7 @@ public partial class PlayerBase : EntityBase {
 		Sprite = GetNode("BodySprite") as BodySprite;
 		hips = GetNode("Hips/Hips") as Hips;
 		Sight = GetNode("VisionLine") as Node2D;
+		marker = GetNode("TrailMarker") as Area2D;
 		(Sight.GetNode("EyeSight") as EyeSight).EyeContact+=temp;
 		//(GetNode("PlayerMovementStrategy") as PlayerMovementStrategy).Parent=this;
 		PlayerStatus.Status.playerInstance=this;
@@ -30,5 +32,6 @@ public partial class PlayerBase : EntityBase {
 		hips.parentPos=Position; //make sure named children are rotated correctly *in spirit* and not *in value*
 		
 		Sprite.currentDirection = (float) currentDirection;
+		marker.Rotation = (float) currentDirection;
 	}
 }
