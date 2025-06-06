@@ -15,8 +15,8 @@ void fragment() {
 	float scaledDist=0.2*height/(dist3)-0.2;
 	//COLOR=vec4(dist1,dist2,1,1.3-1.0/scaledDist);
 	
-	//COLOR=vec4(color.x,color.y,color.z,1.3-1.0/scaledDist);
-	COLOR = vec4(1,1,1,1);
+	COLOR=vec4(color.x,color.y,color.z,1.3-1.0/scaledDist);
+	//COLOR = vec4(1,1,1,1);
 }
 
 //void light() {

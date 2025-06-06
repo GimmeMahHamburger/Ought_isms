@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv0pemt4ka174"]
+[gd_scene load_steps=10 format=3 uid="uid://bv0pemt4ka174"]
 
 [ext_resource type="Script" uid="uid://d04tlio58c453" path="res://Scripts/PlayerBase.cs" id="1_n2hxl"]
 [ext_resource type="PackedScene" uid="uid://dojcfobpifpla" path="res://Scenes/Hips.tscn" id="2_60x8o"]
 [ext_resource type="PackedScene" uid="uid://cjd34q25at8gw" path="res://Scenes/PlayerMovementStrategy.tscn" id="3_g51dw"]
 [ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="4_jlunn"]
 [ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="5_g51dw"]
+[ext_resource type="Script" uid="uid://c7c332l6mpc7w" path="res://Scenes/TankControlsTranslator.cs" id="6_jlunn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g51dw"]
 
@@ -22,9 +23,6 @@ script = ExtResource("1_n2hxl")
 
 [node name="Hips" parent="." instance=ExtResource("2_60x8o")]
 
-[node name="PlayerMovementStrategy" parent="." instance=ExtResource("3_g51dw")]
-rotSpeed = 0.04
-
 [node name="BodySprite" parent="." instance=ExtResource("4_jlunn")]
 
 [node name="VisionLine" parent="." instance=ExtResource("5_g51dw")]
@@ -40,3 +38,9 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrailMarker"]
 shape = SubResource("CircleShape2D_jlunn")
+
+[node name="TankControlsTranslator" type="Node2D" parent="."]
+script = ExtResource("6_jlunn")
+rotSpeed = 0.021
+
+[node name="PlayerMovementStrategy" parent="TankControlsTranslator" instance=ExtResource("3_g51dw")]

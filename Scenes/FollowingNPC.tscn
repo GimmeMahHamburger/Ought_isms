@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2ejpfkq8ogw7"]
+[gd_scene load_steps=8 format=3 uid="uid://c2ejpfkq8ogw7"]
 
 [ext_resource type="Script" uid="uid://ckdt60icf3efq" path="res://Scripts/FollowingNpc.cs" id="1_uvwga"]
 [ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="2_gmskb"]
 [ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="3_vnrga"]
 [ext_resource type="Script" uid="uid://d2rklmf7tupyd" path="res://Scripts/LookTowardsStrategy.cs" id="4_vnrga"]
+[ext_resource type="PackedScene" uid="uid://xk3x1rb0pkvh" path="res://Scenes/MovementTranslator.tscn" id="5_270yi"]
 [ext_resource type="Script" uid="uid://iurp6di4if7o" path="res://Scripts/GoForwardsStrategy.cs" id="5_x74jr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x74jr"]
@@ -24,6 +25,9 @@ shape = SubResource("CircleShape2D_x74jr")
 [node name="LookTowardsStrategy" type="Node2D" parent="."]
 script = ExtResource("4_vnrga")
 
-[node name="GoForwardsStrategy" type="Node2D" parent="."]
+[node name="MovementTranslator" parent="." instance=ExtResource("5_270yi")]
+
+[node name="GoForwardsStrategy" type="Node2D" parent="MovementTranslator" node_paths=PackedStringArray("Parent")]
 script = ExtResource("5_x74jr")
+Parent = NodePath("../..")
 SPEED = 5.0

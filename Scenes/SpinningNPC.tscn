@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cys3apsfw3xws" path="res://Scripts/SpinningNpc.cs" id="1_8py2v"]
 [ext_resource type="PackedScene" uid="uid://tmipqe85nyia" path="res://Scenes/VisionLine.tscn" id="2_exxno"]
 [ext_resource type="PackedScene" uid="uid://xddiq6lb07g2" path="res://Scenes/BodySprite.tscn" id="3_exxno"]
-[ext_resource type="Script" uid="uid://un3pjdafeglq" path="res://Scripts/SpinningStrategy.cs" id="4_bpxqi"]
+[ext_resource type="PackedScene" uid="uid://dndhvqjwctmkl" path="res://Scenes/spinning_strategy.tscn" id="4_bpxqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpxqi"]
 radius = 67.42
@@ -21,5 +21,4 @@ shape = SubResource("CircleShape2D_bpxqi")
 
 [node name="BodySprite" parent="." instance=ExtResource("3_exxno")]
 
-[node name="SpinningStrategy" type="Node2D" parent="."]
-script = ExtResource("4_bpxqi")
+[node name="SpinningStrategy" parent="." instance=ExtResource("4_bpxqi")]

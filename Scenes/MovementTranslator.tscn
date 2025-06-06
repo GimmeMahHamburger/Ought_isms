@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xk3x1rb0pkvh"]
+
+[ext_resource type="Script" uid="uid://cub4o3unbq03i" path="res://Scripts/MovementTranslator.cs" id="1_ewrnr"]
+
+[node name="MovementTranslator" type="Node2D"]
+script = ExtResource("1_ewrnr")

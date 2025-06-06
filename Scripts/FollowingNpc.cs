@@ -13,7 +13,7 @@ public partial class FollowingNpc : EntityBase{
 	public void changeTarget(){
 		
 		(GetNode("LookTowardsStrategy") as LookTowardsStrategy).setTarget(vision.collidingWith());
-		(GetNode("GoForwardsStrategy") as GoForwardsStrategy).setTarget(vision.collidingWith());
+		(GetNode("MovementTranslator/GoForwardsStrategy") as GoForwardsStrategy).setTarget(vision.collidingWith());
 	}
 	public override void _Process(double delta){
 		//if(currentDirection>Math.PI){currentDirection=(float)Math.PI*-1;}

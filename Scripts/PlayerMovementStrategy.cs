@@ -2,9 +2,8 @@ using Godot;
 using System;
 
 public partial class PlayerMovementStrategy : Node2D{
-	public EntityBase Parent;
-	[Export]
-	public double currentDirection = 0;
+	public MovementTranslator Parent;
+
 	Vector2 idealDir;
 	bool MoveUp;
 	bool MoveDown;
@@ -12,11 +11,10 @@ public partial class PlayerMovementStrategy : Node2D{
 	bool MoveRight;
 	[Export]
 	float SPEED = 20;
-	[Export]
-	float rotSpeed;
+	
 	
 	public override void _Ready(){
-		Parent = GetParent() as EntityBase;
+		Parent = GetParent() as MovementTranslator;
 		MoveRight = false;
 		MoveLeft = false;
 		MoveDown = false;
@@ -24,24 +22,7 @@ public partial class PlayerMovementStrategy : Node2D{
 		
 	}
 	
-	void rotateTowards(Vector2 dir){
-		if(dir == new Vector2(0,0)){return;}
-		
-		double dirAngle = Math.Atan2(dir[1],dir[0]); //adapted from help from the prof (thanks man)
-		double tempDiff = dirAngle-currentDirection; //ideally, just "rotate towards the right position"
-		if(tempDiff>Math.PI){tempDiff-=2*Math.PI;} //but that was a complicated problem to solve
-		if(tempDiff<-Math.PI){tempDiff+=2*Math.PI;}
-		if(tempDiff > Math.PI || (tempDiff < 0 && tempDiff > -Math.PI)){
-			currentDirection += (Math.Abs(tempDiff)<0.5 || Math.Abs(tempDiff+Math.PI)>0.02)?rotSpeed:/*(rotSpeed*0.25)*/0;
-
-		}
-		if(tempDiff < -Math.PI || (tempDiff > 0 && tempDiff < Math.PI)){
-			currentDirection -= (Math.Abs(tempDiff)<0.5 || Math.Abs(tempDiff-Math.PI)>0.02)?rotSpeed:/*(rotSpeed*0.25)*/0;
-
-		}
-		if(currentDirection>Math.PI){ currentDirection-=2*Math.PI;}
-		if(currentDirection<-Math.PI){ currentDirection+=2*Math.PI;}
-	}
+	
 	
 	public override void _Input(InputEvent @event){
 		Vector2 dir = new Vector2(0,0);
@@ -52,17 +33,18 @@ public partial class PlayerMovementStrategy : Node2D{
 		
 		dir[0]+= -(MoveRight?1:0) + (MoveLeft?1:0); //the cleverness here is also attributed to the prof
 		dir[1]+= (MoveUp?1:0) - (MoveDown?1:0);
-		idealDir=dir;
+		idealDir=dir.Normalized();
 	}
 	
 	public override void _PhysicsProcess(double delta){
 		
-		Vector2 dir = new Vector2(0,0);
+		//Vector2 dir = new Vector2(0,0);
 		if(MoveDown || MoveUp ||MoveRight || MoveLeft){
 			//GD.Print(Parent);
-			rotateTowards(idealDir);
-			Parent.setCurrentDirection((float)currentDirection);
-			Parent.ApplyCentralImpulse(new Vector2((float)Math.Cos(currentDirection)*SPEED,(float)Math.Sin(currentDirection)*SPEED));
+			Parent.setIntendedVector(idealDir*SPEED);
+			Parent.moveParent();
+			
+			//Parent.ApplyCentralImpulse(new Vector2((float)Math.Cos(currentDirection)*SPEED,(float)Math.Sin(currentDirection)*SPEED));
 		}
 	
 	}
