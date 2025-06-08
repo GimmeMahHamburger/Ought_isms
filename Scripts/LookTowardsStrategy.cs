@@ -15,7 +15,7 @@ public partial class LookTowardsStrategy : Node2D {
 		if(target!=null){
 			float temp = (float)Math.Atan((target.GlobalPosition-Parent.GlobalPosition)[1]/(target.GlobalPosition-Parent.GlobalPosition)[0]);
 			if(target.GlobalPosition[0]<=Parent.GlobalPosition[0]){temp-=(float)Math.PI;}
-			Parent.setCurrentDirection(temp);
+			Parent.setCurrentDirection(temp); //not connected to the looktowardsstrategy due to only providing direction sometimes. should change tho
 		}
 	}
 }

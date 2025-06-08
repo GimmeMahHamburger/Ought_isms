@@ -19,7 +19,7 @@ public partial class GoForwardsStrategy : Node2D{
 		if(target!=null){
 			float currentDirection=Parent.getCurrentDirection();
 			intermediate.setIntendedVector(new Vector2((float)Math.Cos(currentDirection)*SPEED,(float)Math.Sin(currentDirection)*SPEED));
-			intermediate.moveParent();
+			intermediate.moveParent(); //changed to provide an intent instead of a product
 			
 			//Parent.ApplyCentralImpulse();
 		}

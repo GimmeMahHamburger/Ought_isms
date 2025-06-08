@@ -2,6 +2,10 @@ using Godot;
 using System;
 
 public partial class TankControlsTranslator : MovementTranslator {
+	//the content of this class is mostly taken from the playerbase class
+	//I wanted to make other things move like the player
+	//it works the same, I just don't have enough variety in my npcs to use it well
+	
 	[Export]
 	float rotSpeed;
 	public double currentDirection = 0;
@@ -26,13 +30,12 @@ public partial class TankControlsTranslator : MovementTranslator {
 	
 	public override void moveParent(){
 		rotateTowards(intent);
-		GD.Print(intent);
 		(GetParent() as PlayerBase).setCurrentDirection((float)currentDirection);
 		float speed = intent.Length();
 		(GetParent() as PlayerBase).ApplyCentralImpulse(new Vector2((float)Math.Cos(currentDirection)*speed,(float)Math.Sin(currentDirection)*speed));
 	}
 	
 	public override void _Process(double delta){
-		
+		//necessary empty def to override base class's "always move parent" stuff
 	}
 }
